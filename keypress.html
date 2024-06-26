@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Displaying Keypresses</title>
+        <script type="text/javascript">
+            function displayKey(e) {
+                // which key was pressed?
+                if (e.keyCode) {
+                    var keycode=e.keyCode;
+                }  else {
+                    var keycode=e.which;
+                }
+                
+                character=String.fromCharCode(keycode);
+                
+                //New Code
+                var checker = character.toUpperCase();
+                if (checker == "A" | checker == "E" | checker == "I" | checker == "O" | checker == "U") {
+                    character = checker;
+                }
+                
+                if (checker == "R") {
+                    document.body.style.backgroundColor = "#FF0000";
+                    document.body.style.color = "#FFFFFF";
+                }
+                if (checker == "G") {
+                    document.body.style.backgroundColor = "#00FF00";
+                    document.body.style.color = "#FFFFFF";
+                }
+                if (checker == "B") {
+                    document.body.style.backgroundColor = "#0000FF";
+                    document.body.style.color = "#FFFFFF";
+                }
+                
+                // find the object for the destination paragraph
+                var keysParagraph = document.getElementById('keys');
+                
+                // add the character to the paragraph
+                keysParagraph.innerHTML += character;
+            }
+        </script>
+    </head>
+    
+    <body onkeypress="displayKey(event)">
+        <div id="navbar">
+            <a href="/">Back to homepage</a>
+		</div>
+		<!-- Dummy object to hold the navbar-->
+		<div id="spacer">
+		</div>
+		
+        <h1>Displaying Typed Characters</h1>
+        <p>This document includes a simple script that displays 
+            the keys you type as a new paragraph below. Type a few keys 
+            to try it. </p>
+        <div id="keys"></div>
+    </body>
+</html>
